@@ -12,7 +12,7 @@ const ProductCollection = () => {
   const collectionHandler = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:3000/api/admin/add-product`)
+      const response = await fetch(`https://resort-rho.vercel.app/api/admin/add-product`)
       const newData = await response.json();
 
       console.log("productData:", newData);
