@@ -42,49 +42,49 @@ const UserLogin = () => {
 
   return (
     <div className="relative min-h-screen">
-  <Image
-    src="/background.jpg"
-    alt="Background"
-    fill
-    style={{ objectFit: 'cover' }}
-    quality={75}
-    priority
-    className="z-0"
-  />
-  <div className="formContainer absolute inset-0 flex items-center justify-center z-10">
-    {loading ? (
-      <Circles
-        height="50"
-        width="50"
-        color="white"
-        ariaLabel="circles-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
+      <Image
+        src="/background.jpg"
+        alt="Background"
+        fill
+        style={{ objectFit: 'cover' }}
+        quality={75}
+        priority
+        className="z-0"
       />
-    ) : (
-      <form onSubmit={loginHandler} className='bg-green-500 bg-opacity-90 p-8 rounded shadow-lg'>
-        <h1 className='mb-3 text-2xl font-semibold text-white' align="center">Login</h1>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <h3>Email</h3>
-        <input className='bg-white p-2 rounded-sm text-black;' type="email" name='email' onChange={(e) => setEmail(e.target.value)} />
-        <h3>Password</h3>
-        <input className='bg-white p-2 rounded-sm text-black;' type="password" name='password' onChange={(e) => setPassword(e.target.value)} />
-        <br />
-        <div className='text-center mt-4'>
-          <button className='bg-white text-black p-2 rounded-md w-20 cursor-pointer' type='submit'>Login</button>
-        </div>
-        <br />
-        <div className='text-center'>
-          <Link href="/register" className='underline text-white hover:text-yellow-300'>
-          If not registered? Register
-        </Link>
-        </div>
-      </form>
-    )}
-  </div>
-</div>
-    
+      <div className="formContainer absolute inset-0 flex items-center justify-center z-10">
+        {loading ? (
+          <Circles
+            height="50"
+            width="50"
+            color="white"
+            ariaLabel="circles-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        ) : (
+          <form onSubmit={loginHandler} className='bg-[#87cefabf] bg-opacity-90 p-8 rounded shadow-lg'>
+            <h1 className='mb-2 text-2xl font-semibold text-[#36454f]' align="center">Login</h1>
+            {error && <p className='text-center' style={{ color: 'red' }}>{error}</p>}
+            <h3 className='text-[#36454f] font-semibold'>Email</h3>
+            <input className='bg-white p-2 rounded-sm text-black;' placeholder='Enter email' type="email" name='email' onChange={(e) => setEmail(e.target.value)} />
+            <h3 className='text-[#36454f] font-semibold'>Password</h3>
+            <input className='bg-white p-2 rounded-sm text-black;' placeholder='Enter password' type="password" name='password' onChange={(e) => setPassword(e.target.value)} />
+            <br />
+            <div className='text-center mt-4'>
+              <button className="bg-white text-black p-2 rounded-md w-20 cursor-pointer hover:scale-110 hover:font-semibold transition-transform duration-200" type='submit'>Login</button>
+            </div>
+            <br />
+            <div className='text-center'>
+              <Link href="/register" className='underline text-lg text-white hover:text-amber-800 hover:font-semibold'>
+                If not registered? Register
+              </Link>
+            </div>
+          </form>
+        )}
+      </div>
+    </div>
+
   )
 }
 

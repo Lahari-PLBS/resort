@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Circles } from "react-loader-spinner";
@@ -14,9 +13,7 @@ const ProductCollection = () => {
     try {
       const response = await fetch(`https://resort-rho.vercel.app/api/admin/add-product`)
       const newData = await response.json();
-
       console.log("productData:", newData);
-
       setCollections(newData.data);
     } catch (error) {
       setError(error.message || "Failed to fetch Products");
@@ -30,21 +27,22 @@ const ProductCollection = () => {
   }, []);
 
   return (
-    <div className="w-[550px]">
+    <div className="w-fit mx-auto mt-4 mb-7">
       <h1 align="center" className="font-semibold text-2xl mt-3 mb-3">Select your Stay</h1>
       {collections ? (
-        collections.map((item) => {
-          return (
-            <div key={item._id} className="bg-slate-500 text-white mt-5 mb-5 p-2 flex rounded-md shadow-lg">
-              <div className="m-2">
-                <img src={item.image} alt={item.title} className="h-sm w-xs rounded-sm" />
-                <br />
-                <div className="">{item.title}</div>
-                <h2 className="">Rs. {item.price}</h2>
-              </div>
-              <div className="ml-2 mt-4">
-                <div className="text-[16px]">
-                  {/* <h2 className="">Rs. {item.price}</h2> */}
+        <div className="grid grid-cols-2 gap-16 px-4">
+          {collections.map((item) => {
+            return (
+              <div key={item._id} className="bg-slate-200 text-slate-900 p-2 flex rounded-md shadow-lg">
+                <div className="m-2">
+                  <img src={item.image} alt={item.title} className="h-sm w-xs rounded-sm" />
+                  <br />
+                  <div className="">{item.title}</div>
+                  <h2 className="">Rs. {item.price}</h2>
+                </div>
+                <div className="ml-2 mt-4">
+                  <div className="text-[16px]">
+                    {/* <h2 className="">Rs. {item.price}</h2> */}
                     <h3>Amenities</h3>
                     {item.amen.map((serve, i) => {
                       return (
@@ -53,34 +51,20 @@ const ProductCollection = () => {
                         </div>
                       );
                     })}
-                </div>
-                <div className="right">
-                  <Link href={`/detail/${item._id}`}>
-                    <button className="cursor-pointer text-black bg-transparent border border-black p-2 rounded-md text-sm hover:text-white hover:bg-slate-800">Details </button>
-                  </Link>
+                  </div>
+                  <div className="right">
+                    <Link href={`/detail/${item._id}`}>
+                      <button className="cursor-pointer text-black bg-transparent border border-black p-2 rounded-md text-sm hover:text-white hover:bg-slate-800">Details </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })
+            );
+          })}
+        </div>
       ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "50vh",
-          }}
-        >
-          <Circles
-            height="80"
-            width="80"
-            color="#4fa94d"
-            ariaLabel="circles-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "50vh", }}>
+          <Circles height="80" width="80" color="#4fa94d" ariaLabel="circles-loading" wrapperStyle={{}} wrapperClass="" visible={true} />
         </div>
       )}
     </div>

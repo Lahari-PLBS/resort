@@ -1,6 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import { FaTrash } from "react-icons/fa";
+
+
+
 
 const UserInvoice = ({ userId }) => {
   const [invoice, setInvoice] = useState(null);
@@ -81,35 +85,61 @@ const UserInvoice = ({ userId }) => {
 
 
   return (
-    <div className="bg-slate-500 text-white ml-10 mr-10 mt-24 mb-24 p-3 rounded-md shadow-lg">
-      <h1 align="center" className='font-semibold text-xl underline'>My Bookings</h1>
+    <div className="ml-10 mr-10 mt-24 mb-24 p-3">
+      {/* <h1 align="center" className='font-semibold text-xl mb-3'>My Bookings</h1> */}
 
       {invoice.bookings.length > 0 ? (
-        invoice.bookings.map((item) => {
+        invoice.bookings.map((item, index) => {
           const days = calculateDays(item.startDate, item.endDate);
           const totalAmount = days * item.price;
 
           return (
-            <div key={item._id} className="flex justify-between items-center border border-slate-800 p-3 mb-3">
-              <div>
-                <h3 className='underline font-semibold font-xl'>{item.productName}</h3>
-                <p>Booking dates from {item.startDate} to {item.endDate}</p>
-                <p>Discount: {item.offer}%</p>
-                <p>Number of Days: {days}</p>
-                <h4>Price per day: {item.price}</h4>
-                <h4>Total Amount: {totalAmount}</h4>
+            <div key={item._id}>
+              <div className="flex justify-between items-center rounded-sm p-3 mb-3">
+                <div className="flex items-center gap-4">
+                  <div className="flex-shrink-0">
+                    <img
+                      src={item.image}
+                      alt={item.productName}
+                      className="w-24 h-24 object-cover rounded-md"
+                    />
+                  </div>
+
+                  <div className="flex-grow">
+                    <h3 className='underline font-semibold text-lg'>{item.productName}</h3>
+                    <p>Booking dates from {item.startDate} to {item.endDate}</p>
+                    <h4 className="font-semibold">Total Amount: {totalAmount}</h4>
+                  </div>
+                </div>
+
+                <div align="center">
+                  <button
+                    onClick={() => deleteBooking(item._id)}
+                    className="bg-white text-black p-2 rounded-md mb-3 cursor-pointer hover:bg-black hover:text-white"
+                  >
+                    <FaTrash />
+                  </button>
+                </div>
               </div>
 
-              <div align="center">
-                <button onClick={() => deleteBooking(item._id)}
-                  className="bg-white text-red-500  border border-red-500 p-2 rounded-md  mb-3 cursor-pointer hover:bg-red-500 hover:text-white"
-                >Cancel Booking</button>
-              </div>
+              {index < invoice.bookings.length - 1 && (
+                <hr className="border-white border-t-2 my-3" />
+              )}
             </div>
           );
         })
       ) : (
-        <div className="no-bookings text-center mt-5">No bookings available</div>
+        <div className="no-bookings text-center mt-10 flex flex-col items-center">
+          <img className='h-100 w-100 mb-7' src="https://media.istockphoto.com/id/1500807620/vector/suitcase-icon-flat-design-on-white-background.jpg?s=612x612&w=0&k=20&c=UF-OEI3d4s68vI6v0fglFskib0ZFMcdr0r0Cn6oPcT0=" />
+          <p className="text-xl mb-10 font-semibold">No bookings available</p>
+          <button
+            onClick={() => window.location.href = '/'}
+            className="bg-white border border-slate-800 text-slate-800 px-6 py-3 rounded-md font-semibold cursor-pointer hover:bg-slate-800 hover:text-white transition-colors duration-200"
+          >
+            Book Now
+          </button>
+        </div>
+
       )}
     </div>
 
