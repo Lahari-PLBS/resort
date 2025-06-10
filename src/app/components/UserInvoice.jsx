@@ -49,20 +49,20 @@ const UserInvoice = ({ userId }) => {
     const start = new Date(startDate);
     const end = new Date(endDate);
     const difference = Math.abs(end - start);
-    return Math.ceil(difference / (1000 * 60 * 60 * 24)); 
+    return Math.ceil(difference / (1000 * 60 * 60 * 24));
   };
 
   const deleteBooking = async (bookingId) => {
     const isConfirmed = window.confirm("Are you sure to delete this booking?");
     if (!isConfirmed) {
-      return; 
+      return;
     }
-    
+
     try {
       const response = await fetch(`http://localhost:3000/api/users/${bookingId}`, {
         method: 'DELETE',
       });
-  
+
       const result = await response.json();
       if (response.ok) {
         setInvoice((prevInvoice) => ({
@@ -78,38 +78,41 @@ const UserInvoice = ({ userId }) => {
       alert('Failed to delete booking');
     }
   };
-  
+
 
   return (
-    <div className="invoice-container">
-    <h1>Username: {invoice.username}</h1>
-  
-    {invoice.bookings.length > 0 ? (
-      invoice.bookings.map((item) => {
-        const days = calculateDays(item.startDate, item.endDate);
-        const totalAmount = days * item.price;
-  
-        return (
-          <div key={item._id} className="booking-item">
-            <h3>{item.productName}</h3>
-            <p>Booking dates from {item.startDate} to {item.endDate}</p>
-            <p>Discount: {item.offer}%</p>
-            <p>Number of Days: {days}</p>
-            <h4>Price per day: {item.price}</h4>
-            <h4>Total Amount: {totalAmount}</h4>
-           <div align="center">
-           <button onClick={() => deleteBooking(item._id)}
-                className="deleteBtn"
-                >Delete Booking</button>
-           </div>
-          </div>
-        );
-      })
-    ) : (
-      <div className="no-bookings">No bookings available</div>
-    )}
-  </div>
-  
+    <div className="bg-slate-500 text-white ml-10 mr-10 mt-24 mb-24 p-3 rounded-md shadow-lg">
+      <h1 align="center" className='font-semibold text-xl underline'>My Bookings</h1>
+
+      {invoice.bookings.length > 0 ? (
+        invoice.bookings.map((item) => {
+          const days = calculateDays(item.startDate, item.endDate);
+          const totalAmount = days * item.price;
+
+          return (
+            <div key={item._id} className="flex justify-between items-center border border-slate-800 p-3 mb-3">
+              <div>
+                <h3 className='underline font-semibold font-xl'>{item.productName}</h3>
+                <p>Booking dates from {item.startDate} to {item.endDate}</p>
+                <p>Discount: {item.offer}%</p>
+                <p>Number of Days: {days}</p>
+                <h4>Price per day: {item.price}</h4>
+                <h4>Total Amount: {totalAmount}</h4>
+              </div>
+
+              <div align="center">
+                <button onClick={() => deleteBooking(item._id)}
+                  className="bg-white text-red-500  border border-red-500 p-2 rounded-md  mb-3 cursor-pointer hover:bg-red-500 hover:text-white"
+                >Cancel Booking</button>
+              </div>
+            </div>
+          );
+        })
+      ) : (
+        <div className="no-bookings text-center mt-5">No bookings available</div>
+      )}
+    </div>
+
   );
 };
 

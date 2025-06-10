@@ -24,7 +24,7 @@ export const {auth, signIn, signOut, handlers:{GET, POST}} = NextAuth({
         })
 
     ],
-    secret:process.env.SECRET_KEY,
+    secret:process.env.SECRET_KEY, //
     callbacks:{
         async jwt({token, user}){
             if(user){

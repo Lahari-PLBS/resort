@@ -31,7 +31,7 @@ export async function bookingAction(bookingDetails) {
             offer: bookingDetails.record.offer,
             image: bookingDetails.record.image
         });
-
+;
         await UserModel.findByIdAndUpdate(
             userId,
             { $push: { bookings: userBookingDetails._id } },

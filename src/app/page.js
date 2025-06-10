@@ -5,15 +5,16 @@ import { auth } from './auth'
 import { redirect } from 'next/navigation'
 import UserNavigation from './components/UserNavigation'
 import AdminPage from './admin/page'
-import ProductCollection from './components/ProductCollection'
+// import ProductCollection from './components/ProductCollection'
+import BackgroundVideo from './BackgroundVideo'
 
-const HomePage = async() => {
+const HomePage = async () => {
 
   const session = await auth()
 
   await DBConnection()
- 
-  if(!session){
+
+  if (!session) {
     redirect("/login")
   }
 
@@ -32,16 +33,15 @@ const HomePage = async() => {
 
   return (
     <div>
-      {session.role === 'user' &&  (
-        <>
-        <UserNavigation userName = {userName}/>
-        <img src='banner.jpg' alt='banner' className='bannerImage'/>
-        <ProductCollection />
-        </>
-      ) }
+      {session.role === 'user' && (
+        <div>
+          <UserNavigation userName={userName} />
+          <BackgroundVideo />
+        </div>
+      )}
       {session.role === 'admin' &&
-        <AdminPage /> 
-    }
+        <AdminPage />
+      }
     </div>
   )
 }

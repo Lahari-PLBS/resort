@@ -13,6 +13,8 @@ const AdminPage = async() => {
 
   const session = await auth()
 
+  console.log("session:", session)
+
   if(!session){
     redirect("/login")
   }

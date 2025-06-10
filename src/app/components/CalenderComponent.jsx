@@ -41,15 +41,15 @@ const CalenderComponent = ({onDatesSelect}) => {
     const formattedDate = nextDate.toDateString()
 
   return (
-    <div className='calenderSection'>
-            <div className="currentDate" onClick={()=>setShowCalender(!showCalender)}>
+    <div className='flex'>
+            <div className="text-yellow-400 cursor-context-menu" onClick={()=>setShowCalender(!showCalender)}>
                 {!selectedDates && (
                     <>
                     {`${currentDate} - ${formattedDate}`}
                     </>
                 )}
                 {selectedDates && (
-                    <div className="" style={{color:'red'}}>
+                    <div className="mt-3 underline cursor-pointer text-slate-600">
                         {selectedDates}
                     </div>
                 )}
@@ -66,7 +66,7 @@ const CalenderComponent = ({onDatesSelect}) => {
        />
         }
             <button onClick={handleSelectDates}
-            className='calenderButton'
+            className='ml-3 bg-transparent border border-black h-[50px] w-[150px] p-1 rounded-md text-[15px] hover:bg-slate-800 hover:text-white cursor-pointer'
             >Select Dates</button>
 
     </div>

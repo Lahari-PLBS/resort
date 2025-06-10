@@ -1,4 +1,3 @@
-
 'use client'
 
 import React, { useState } from 'react'
@@ -14,8 +13,6 @@ const RegisterForm = () => {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
-
-
 
     const router = useRouter()
 
@@ -43,49 +40,46 @@ const RegisterForm = () => {
     }
 
   return (
-   <div >
+   <div className="relative min-h-screen">
     <Image
         src="/background.jpg"
         alt="Background"
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: 'cover' }}
         quality={75} 
         priority 
+        className="z-0"
     />
-     <div className='formContainer'>
+     <div className="formContainer absolute inset-0 flex items-center justify-center z-10">
       {
         loading? (
-          <>
-           <Circles
-  height="80"
-  width="80"
-  color="white"
-  ariaLabel="circles-loading"
-  wrapperStyle={{}}
-  wrapperClass=""
-  visible={true}
-  />
-          </>
-        ):(<>
-         <form onSubmit={registerHandler} className='formSection' >
-      <h1 style={{ borderBottom:'1px solid white'}} className="rTitle">Register </h1>
-      {error && <p style={{color:'red'}}>{error}</p> }
-            <h3>Username</h3>
-            <input type="text" name='username' onChange={(e)=>setUsername(e.target.value)} />
-            <h3>Email</h3>
-            <input type="email" name='email' onChange={(e)=>setEmail(e.target.value)} />
-            <h3>Password</h3>
-            <input type="password" name='password' onChange={(e)=>setPassword(e.target.value)} />
-            <br /><br />
-            <button type='submit'>Register</button>
-        <Link href="/login" className='authLink'>
-          Already Registered? Login
-        </Link>
+          <Circles
+            height="80"
+            width="80"
+            color="white"
+            ariaLabel="circles-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        ):(
+         <form onSubmit={registerHandler} className='bg-green-500 bg-opacity-90 p-8 rounded shadow-lg'>
+            <h1 style={{ borderBottom:'1px solid white'}} className="text-white text-center font-semibold text-2xl">Register </h1>
+            {error && <p style={{color:'red', textAlign:'center'}}>{error}</p> }
+            <h3 className='text-white mt-2'>Username</h3>
+            <input className='bg-white p-2 text-black rounded-md' type="text" name='username' onChange={(e)=>setUsername(e.target.value)} />
+            <h3 className='text-white mt-2'>Email</h3>
+            <input className='bg-white p-2 text-black rounded-md' type="email" name='email' onChange={(e)=>setEmail(e.target.value)} />
+            <h3 className='text-white mt-2'>Password</h3>
+            <input className='bg-white p-2 text-black rounded-md' type="password" name='password' onChange={(e)=>setPassword(e.target.value)} />
+            <br />
+            <div className='text-center'><button className='bg-white p-2 rounded-md mt-4 mb-7 cursor-pointer' type='submit'>Register</button></div>
+            <Link href="/login" className='text-white text-center block underline hover:text-yellow-300 mt-3'>
+              Already Registered? Login
+            </Link>
         </form>
-        
-        </>)
+        )
       }
-       
     </div>
    </div>
   )

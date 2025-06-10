@@ -30,34 +30,33 @@ const ProductCollection = () => {
   }, []);
 
   return (
-    <div className="productSection">
-      <h1 align="center">Select your Stay</h1>
+    <div className="w-[550px]">
+      <h1 align="center" className="font-semibold text-2xl mt-3 mb-3">Select your Stay</h1>
       {collections ? (
         collections.map((item) => {
           return (
-            <div key={item._id} className="proDetail">
-              <div className="left">
-                <div className="title">{item.title}</div>
+            <div key={item._id} className="bg-slate-500 text-white mt-5 mb-5 p-2 flex rounded-md shadow-lg">
+              <div className="m-2">
+                <img src={item.image} alt={item.title} className="h-sm w-xs rounded-sm" />
                 <br />
-                <img src={item.image} alt={item.title} className="roomImage" />
+                <div className="">{item.title}</div>
+                <h2 className="">Rs. {item.price}</h2>
               </div>
-              <div className="center">
-                <div className="pamen">
-                  <h2 className="price">Rs. {item.price}</h2>
-                  <div>
+              <div className="ml-2 mt-4">
+                <div className="text-[16px]">
+                  {/* <h2 className="">Rs. {item.price}</h2> */}
                     <h3>Amenities</h3>
                     {item.amen.map((serve, i) => {
                       return (
-                        <div className="amenities" key={i}>
-                          <div>*{serve}</div>
+                        <div className="font-normal" key={i}>
+                          <div className="flex"><span className="text-orange-300 mb-2">*</span><span className="ml-1">{serve}</span></div>
                         </div>
                       );
                     })}
-                  </div>
                 </div>
                 <div className="right">
                   <Link href={`/detail/${item._id}`}>
-                    <button className="detail">Details </button>
+                    <button className="cursor-pointer text-black bg-transparent border border-black p-2 rounded-md text-sm hover:text-white hover:bg-slate-800">Details </button>
                   </Link>
                 </div>
               </div>

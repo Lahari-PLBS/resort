@@ -12,80 +12,79 @@ import { Circles } from 'react-loader-spinner'
 
 
 const UserLogin = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("")
-    const [error, setError] = useState("")
-    const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
 
-    const router = useRouter()
+  const router = useRouter()
 
-    const loginHandler = async(e)=>{
-        e.preventDefault()
-        setLoading(true)
-        const loginDetails = {email, password}
-        console.log(loginDetails)
+  const loginHandler = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    const loginDetails = { email, password }
+    console.log(loginDetails)
 
-        try {
-          const response = await loginAction(loginDetails)
-          if(response.success){
-                router.push("/")
-          }else{
-            setError(response.message || "login failed, Invalid Credentials");
-          }
-        } catch (error) {
-            setError("Invalid Credentials")
-        }finally{
-          setLoading(false)
-        }
+    try {
+      const response = await loginAction(loginDetails)
+      if (response.success) {
+        router.push("/")
+      } else {
+        setError(response.message || "login failed, Invalid Credentials");
+      }
+    } catch (error) {
+      setError("Invalid Credentials")
+    } finally {
+      setLoading(false)
     }
+  }
 
 
   return (
-<div >
-<Image
-        src="/background.jpg"
-        alt="Background"
-        fill
-        style = {{ objectFit: 'cover'}}
-        quality={75} 
-        priority 
-    />
-<div className='formContainer'>
-{
-  loading ? (
-    <>
-    <Circles
-  height="80"
-  width="80"
-  color="white"
-  ariaLabel="circles-loading"
-  wrapperStyle={{}}
-  wrapperClass=""
-  visible={true}
+    <div className="relative min-h-screen">
+  <Image
+    src="/background.jpg"
+    alt="Background"
+    fill
+    style={{ objectFit: 'cover' }}
+    quality={75}
+    priority
+    className="z-0"
   />
-    </>
-
-  ):(
-    <>
-      <form onSubmit={loginHandler} className='formSection' >
-      <h1>Login</h1>
-           {error && <p style={{color:'red'}}>{error}</p> }
-            <h3>Email</h3>
-            <input type="email" name='email' onChange={(e)=>setEmail(e.target.value)} />
-            <h3>Password</h3>
-            <input type="password" name='password' onChange={(e)=>setPassword(e.target.value)} />
-            <br /><br />
-            <button type='submit'>Login</button>
-        <Link href="/register" className='authLink'>
-         If not registered? Regiter
+  <div className="formContainer absolute inset-0 flex items-center justify-center z-10">
+    {loading ? (
+      <Circles
+        height="50"
+        width="50"
+        color="white"
+        ariaLabel="circles-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+      />
+    ) : (
+      <form onSubmit={loginHandler} className='bg-green-500 bg-opacity-90 p-8 rounded shadow-lg'>
+        <h1 className='mb-3 text-2xl font-semibold text-white' align="center">Login</h1>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <h3>Email</h3>
+        <input className='bg-white p-2 rounded-sm text-black;' type="email" name='email' onChange={(e) => setEmail(e.target.value)} />
+        <h3>Password</h3>
+        <input className='bg-white p-2 rounded-sm text-black;' type="password" name='password' onChange={(e) => setPassword(e.target.value)} />
+        <br />
+        <div className='text-center mt-4'>
+          <button className='bg-white text-black p-2 rounded-md w-20 cursor-pointer' type='submit'>Login</button>
+        </div>
+        <br />
+        <div className='text-center'>
+          <Link href="/register" className='underline text-white hover:text-yellow-300'>
+          If not registered? Register
         </Link>
-        </form>
-    </>
-  )
-}
-     
-    </div>
+        </div>
+      </form>
+    )}
+  </div>
 </div>
+    
   )
 }
 
