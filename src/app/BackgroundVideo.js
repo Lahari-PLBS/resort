@@ -1,4 +1,5 @@
 import ProductCollection from "./components/ProductCollection";
+import Footer from "./Footer";
 
 export default function BackgroundVideo() {
   return (
@@ -18,7 +19,7 @@ export default function BackgroundVideo() {
           <ProductCollection />
         </div>
       </div>
-
+      <Footer />
     </>
 
   );

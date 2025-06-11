@@ -7,7 +7,7 @@ import UserNavigation from './components/UserNavigation'
 import AdminPage from './admin/page'
 // import ProductCollection from './components/ProductCollection'
 import BackgroundVideo from './BackgroundVideo'
-import Footer from './Footer'
+// import Footer from './Footer'
 
 
 const HomePage = async () => {
@@ -39,7 +39,7 @@ const HomePage = async () => {
         <div>
           <UserNavigation userName={userName} />
           <BackgroundVideo />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       )}
       {session.role === 'admin' && (
