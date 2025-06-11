@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Circles } from "react-loader-spinner";
-import Footer from "../Footer";
+// import Footer from "../Footer";
 
 const ProductCollection = () => {
   const [collections, setCollections] = useState("");
@@ -79,7 +79,7 @@ const ProductCollection = () => {
           <Circles height="80" width="80" color="#4fa94d" ariaLabel="circles-loading" wrapperStyle={{}} wrapperClass="" visible={true} />
         </div>
       )}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
