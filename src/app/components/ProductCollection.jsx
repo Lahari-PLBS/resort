@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Circles } from "react-loader-spinner";
+import Footer from "../Footer";
 // import Footer from "../Footer";
 
 const ProductCollection = () => {
@@ -28,7 +29,7 @@ const ProductCollection = () => {
   }, []);
 
   return (
-    <div className="w-fit mx-auto mt-4 mb-32 px-4">
+    <div className="w-fit mx-auto mt-4 mb-32 px-4 z-10">
       <h1 align="center" className="font-semibold text-2xl mt-3 mb-3">Select your Stay</h1>
       {collections ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16">
@@ -73,6 +74,7 @@ const ProductCollection = () => {
               </div>
             );
           })}
+          <Footer />
         </div>
       ) : (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "50vh", }}>
