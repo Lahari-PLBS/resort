@@ -115,7 +115,7 @@ const UserInvoice = ({ userId }) => {
                 <div align="center">
                   <button
                     onClick={() => deleteBooking(item._id)}
-                    className="bg-white text-black p-2 rounded-md mb-3 cursor-pointer hover:bg-black hover:text-white"
+                    className="bg-white text-black p-2 rounded-md mb-3 cursor-pointer hover:border hover:border-black"
                   >
                     <FaTrash />
                   </button>
@@ -123,7 +123,7 @@ const UserInvoice = ({ userId }) => {
               </div>
 
               {index < invoice.bookings.length - 1 && (
-                <hr className="border-white border-t-2 my-3" />
+                <hr className="border-black border-t-2 my-3" />
               )}
             </div>
           );

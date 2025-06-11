@@ -7,6 +7,8 @@ import UserNavigation from './components/UserNavigation'
 import AdminPage from './admin/page'
 // import ProductCollection from './components/ProductCollection'
 import BackgroundVideo from './BackgroundVideo'
+import Footer from './Footer'
+
 
 const HomePage = async () => {
 
@@ -37,11 +39,15 @@ const HomePage = async () => {
         <div>
           <UserNavigation userName={userName} />
           <BackgroundVideo />
+          <Footer />
         </div>
       )}
-      {session.role === 'admin' &&
-        <AdminPage />
-      }
+      {session.role === 'admin' && (
+        <>
+          <AdminPage />
+          {/* <BackgroundVideo /> */}
+        </>
+      )}
     </div>
   )
 }

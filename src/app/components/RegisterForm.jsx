@@ -63,7 +63,7 @@ const RegisterForm = () => {
               visible={true}
             />
           ) : (
-            <form onSubmit={registerHandler} className='bg-[#87cefabf] bg-opacity-90 p-8 rounded shadow-lg'>
+            <form onSubmit={registerHandler} className='bg-[#87cefabf] text-black bg-opacity-90 p-8 rounded shadow-lg'>
               <h1 style={{ borderBottom: '1px solid white' }} className="text-[#36454f] text-center font-semibold text-2xl">Register </h1>
               {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
               <h3 className='text-[#36454f] font-semibold mt-2'>Username</h3>

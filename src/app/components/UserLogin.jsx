@@ -63,7 +63,7 @@ const UserLogin = () => {
             visible={true}
           />
         ) : (
-          <form onSubmit={loginHandler} className='bg-[#87cefabf] bg-opacity-90 p-8 rounded shadow-lg'>
+          <form onSubmit={loginHandler} className='bg-[#87cefabf] text-black bg-opacity-90 p-8 rounded shadow-lg'>
             <h1 className='mb-2 text-2xl font-semibold text-[#36454f]' align="center">Login</h1>
             {error && <p className='text-center' style={{ color: 'red' }}>{error}</p>}
             <h3 className='text-[#36454f] font-semibold'>Email</h3>

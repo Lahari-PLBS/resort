@@ -27,8 +27,13 @@ const ProductCollection = () => {
   }, []);
 
   return (
-    <div className="w-fit mx-auto mt-4 mb-32 px-4">
-      <h1 align="center" className="font-semibold text-2xl mt-3 mb-3">Select your Stay</h1>
+    <div className="w-fit mx-auto mt-4 mb-7 px-4">
+      {/* <h1 align="center" className="font-semibold text-2xl mt-3 mb-3">Select your Stay</h1> */}
+      <div>
+        <Link href="/"><h1 align="center" className="font-semibold text-2xl mt-1 mb-3">Go Back</h1>
+        </Link>
+      </div>
+      
       {collections ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-16">
           {collections.map((item) => {
@@ -44,24 +49,13 @@ const ProductCollection = () => {
                   <div className="text-[16px]">
                     {/* <h2 className="">Rs. {item.price}</h2> */}
                     <h3>Amenities</h3>
-                    {/* {item.amen.map((serve, i) => {
+                    {item.amen.map((serve, i) => {
                       return (
                         <div className="font-normal" key={i}>
                           <div className="flex"><span className="text-orange-300 mb-2">*</span><span className="ml-1">{serve}</span></div>
                         </div>
                       );
-                    })} */}
-                    {item.amen
-                      .filter((serve) => serve && serve.trim() !== "")
-                      .map((serve, i) => (
-                        <div className="font-normal" key={i}>
-                          <div className="flex">
-                            <span className="text-orange-400 mt-1">*</span>
-                            <span className="ml-1">{serve}</span>
-                          </div>
-                        </div>
-                      ))}
-
+                    })}
                   </div>
                   <div className="right">
                     <Link href={`/detail/${item._id}`}>

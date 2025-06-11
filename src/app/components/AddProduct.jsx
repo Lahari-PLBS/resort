@@ -1,5 +1,3 @@
-
-
 "use client"
 
 import React, { useState } from 'react'
@@ -17,7 +15,6 @@ const AddProduct = () => {
     e.preventDefault()
 
     const recordDetails = { title, price, offer, amen, desc, image }
-    console.log(recordDetails)
 
     const data = new FormData()
     data.append('title', title);
@@ -45,50 +42,47 @@ const AddProduct = () => {
     } catch (error) {
       console.log(error)
     }
-
-
   }
 
   return (
-    <div className={admin.container}>
-      <h1 className='text-center font-semibold text-xl'>Add Record</h1>
-      <form onSubmit={recordHandler} encType='multipart/form-data'>
-        <div className={admin.fields}>
-          <div>
-            <h3>Title</h3>
-            <input className='bg-white text-black p-2 rounded-md mb-3' type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+    <div className={`${admin.container} px-4`}>
+      <h1 className='text-center font-semibold text-xl'>Add Product</h1>
+      <form onSubmit={recordHandler} encType='multipart/form-data' className='flex flex-col gap-4'>
+
+        {/* Input Fields: All full-width on mobile, two-column on desktop */}
+        <div className='flex flex-wrap md:flex-nowrap gap-4'>
+          <div className='md:w-1/2'>
+            <h3>Product Name</h3>
+            <input className=' bg-white text-black p-3 rounded-md' placeholder='Enter product name' type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
           </div>
-          <div>
+          <div className='w-full md:w-1/2'>
             <h3>Price</h3>
-            <input className='bg-white text-black p-2 rounded-md mb-3' type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
+            <input className=' bg-white text-black p-3 rounded-md' placeholder='Enter price' type="number" value={price} onChange={(e) => setPrice(e.target.value)} />
           </div>
         </div>
-        <div className={admin.fields}>
-          <div className="">
-            <h3>Offer</h3>
-            <input className='bg-white text-black p-2 rounded-md mb-3' type="number" value={offer} onChange={(e) => setOffer(e.target.value)} />
+
+        <div className='flex flex-wrap md:flex-nowrap gap-4'>
+          <div className='w-full md:w-1/2'>
+            <h3>Discount</h3>
+            <input className=' bg-white text-black p-3 rounded-md' placeholder='Enter discount' type="number" value={offer} onChange={(e) => setOffer(e.target.value)} />
           </div>
-          <div className="">
+          <div className='w-full md:w-1/2'>
             <h3>Amenities</h3>
-            <input className='bg-white text-black p-2 rounded-md mb-3' type="text" value={amen} onChange={(e) => setAmen(e.target.value)} />
+            <input className=' bg-white text-black p-3 rounded-md' placeholder='Enter extra amenities' type="text" value={amen} onChange={(e) => setAmen(e.target.value)} />
           </div>
         </div>
-        <div className={admin.textField}>
+
+        {/* Description Field */}
+        <div>
           <h3>Description</h3>
-          <textarea className='bg-white text-black p-2 rounded-md mb-3' type="text" rows="5" value={desc} onChange={(e) => setDesc(e.target.value)} />
+          <textarea className='w-full bg-white text-black p-3 rounded-md' placeholder='Enter the description' rows="5" value={desc} onChange={(e) => setDesc(e.target.value)} />
         </div>
-        {/* <div className='flex ml-46 mr-3'>
-          <h3>Upload Image</h3>
-          <input className="bg-gray-200 border border-gray-600 rounded-sm w-[100px]" type="file" accept='image/*' onChange={(e) => setImage(e.target.files[0])} />
-        </div> */}
-        {/* <div className='flex ml-46 mr-3'>
-          <h3 className='mr-3'>Upload Image:</h3>
-          <input className="bg-white text-black underline rounded-md mb-3" type="file" accept='image/*' onChange={(e) => setImage(e.target.files[0])} />
-        </div> */}
-        <div className="mb-3 ml-46">
+
+        {/* Image Upload */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
           <label
             htmlFor="imageUpload"
-            className="bg-white text-black rounded-md px-3 py-1 cursor-pointer inline-block"
+            className="bg-white text-black rounded-md px-3 py-2 cursor-pointer inline-block w-fit"
           >
             Choose File
           </label>
@@ -99,14 +93,12 @@ const AddProduct = () => {
             className="hidden"
             onChange={(e) => setImage(e.target.files[0])}
           />
-          <span className="ml-2 text-white">{image?.name || 'No file chosen'}</span>
+          <span className="text-white text-sm">{image?.name || 'No file chosen'}</span>
         </div>
 
-
-
-
-        <div className='flex justify-center font-semibold text-lg'>
-          <button className='border-2 w-30 border-white p-3 rounded-md hover:bg-white hover:text-slate-800 cursor-pointer' type='submit'>
+        {/* Submit Button */}
+        <div className='flex justify-center font-semibold text-lg mt-4'>
+          <button className='border-2 w-32 border-white p-3 rounded-md hover:bg-white hover:text-slate-800 cursor-pointer' type='submit'>
             Submit
           </button>
         </div>

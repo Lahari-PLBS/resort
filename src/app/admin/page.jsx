@@ -6,6 +6,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import AdminNavbar from '../components/AdminNavbar'
 import AddProduct from '../components/AddProduct'
+import ProductCollection from '../components/ProductCollection'
 
 
 

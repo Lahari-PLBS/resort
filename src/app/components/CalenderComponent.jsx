@@ -42,7 +42,7 @@ const CalenderComponent = ({onDatesSelect}) => {
 
   return (
     <div className='flex'>
-            <div className="text-yellow-400 cursor-context-menu" onClick={()=>setShowCalender(!showCalender)}>
+            <div className="text-amber-600 mt-2 cursor-pointer" onClick={()=>setShowCalender(!showCalender)}>
                 {!selectedDates && (
                     <>
                     {`${currentDate} - ${formattedDate}`}
