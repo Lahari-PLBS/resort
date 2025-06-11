@@ -1,5 +1,5 @@
 import ProductCollection from "./components/ProductCollection";
-// import Footer from "./Footer";
+import Footer from "./Footer";
 
 export default function BackgroundVideo() {
   return (
@@ -18,7 +18,7 @@ export default function BackgroundVideo() {
         <div className="pt-24 relative z-10 flex items-center justify-center h-full text-white text-xl font-bold">
           <ProductCollection />
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
       
     </>

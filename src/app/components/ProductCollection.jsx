@@ -74,7 +74,7 @@ const ProductCollection = () => {
               </div>
             );
           })}
-          <Footer />
+          {/* <Footer /> */}
         </div>
       ) : (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "50vh", }}>
