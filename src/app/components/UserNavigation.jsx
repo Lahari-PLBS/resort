@@ -36,7 +36,7 @@ const UserNavigation = ({ userName }) => {
       {/* Desktop Menu */}
       <div className="hidden md:flex md:items-center md:space-x-6 mt-2 md:mt-0">
         <Link href="/invoice">
-          <div className="transition duration-200 hover:scale-105 hover:underline text-sm md:text-base">
+          <div className="transition duration-200 hover:scale-105 hover:underline hover:font-semibold text-sm md:text-base">
             My Bookings
           </div>
         </Link>

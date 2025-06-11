@@ -37,7 +37,7 @@ const AdminNavbar = () => {
       {/* Desktop Menu */}
       <div className="hidden md:flex md:items-center md:space-x-6 mt-2 md:mt-0">
         <Link href="/admin-list">
-          <div className="text-xl hover:underline">Resorts</div>
+          <div className="text-xl hover:scale-105 hover:underline hover:font-semibold">Resorts</div>
         </Link>
 
         <div className="flex flex-col items-center ml-130">

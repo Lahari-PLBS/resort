@@ -49,13 +49,23 @@ const ProductCollection = () => {
                   <div className="text-[16px]">
                     {/* <h2 className="">Rs. {item.price}</h2> */}
                     <h3>Amenities</h3>
-                    {item.amen.map((serve, i) => {
+                    {/* {item.amen.map((serve, i) => {
                       return (
                         <div className="font-normal" key={i}>
                           <div className="flex"><span className="text-orange-300 mb-2">*</span><span className="ml-1">{serve}</span></div>
                         </div>
                       );
-                    })}
+                    })} */}
+                    {item.amen
+                      .filter((serve) => serve && serve.trim() !== "")
+                      .map((serve, i) => (
+                        <div className="font-normal" key={i}>
+                          <div className="flex">
+                            <span className="text-orange-400 mt-1">*</span>
+                            <span className="ml-1">{serve}</span>
+                          </div>
+                        </div>
+                      ))}
                   </div>
                   <div className="right">
                     <Link href={`/detail/${item._id}`}>
